@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+*{
+    box-sizing: border-box; /* border-box is used so that when padding/borders are added to an element
+                            it won't affect the width of it  */
+}
+
+:root{
+    --line-border-fill : #3498db;           /* Custom Properties which are basically variables*/
+    --line-border-empty : #e0e0e0;   
+}
+
+body{
+    background-color: #f6f7fb;
+    font-family: 'Muli' ,sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin : 0;
+    overflow: hidden;
+}
+
+.container{
+    text-align: center;
+}
+
+.progress-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before{
+    content: '';
+   /* background-color: #e0e0e0; */
+   background-color: var(--line-border-empty);  /* custom property */
+    position: absolute;
+    top : 50%;
+    left: 0;
+    height: 4px;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: -1;
+    
+}
+
+.progress{
+     /* background-color: #3498db; */
+     background-color: var(--line-border-fill);
+    position: absolute;
+    top : 50%; /* to make top of the line in middle*/
+    left : 0;
+    transform: translateY(-50%); /* To Make the line in middle */
+    height : 4px;   /* To set the height of the line */
+    width : 0%;
+    z-index: -1; /*to set the line behind the circle and behind the numbers */
+    transition: 0.4s ease;
+}
+
+.circle{
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #e0e0e0;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.circle.active{
+    border-color: var(--line-border-fill);
+  /*   border-color: #3498db; */
+}
+
+.btn{
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active{
+    transform: scale(0.98);
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.btn:disabled{
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
